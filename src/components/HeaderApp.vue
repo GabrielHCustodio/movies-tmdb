@@ -35,7 +35,8 @@ export default {
   width: 100%;
   height: 70px;
   padding: 10px 60px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 10;
 }
 
 .container-left,
@@ -44,9 +45,9 @@ export default {
 }
 
 .container-left {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .container-left #menu {
@@ -64,9 +65,9 @@ export default {
 }
 
 .container-left #icon-menu {
-    font-size: 22px;
-    color: #fff;
-    display: none;
+  font-size: 22px;
+  color: #fff;
+  display: none;
 }
 
 .container-right {
@@ -90,7 +91,7 @@ export default {
 }
 
 .container-right i:first-child {
-  margin-right: 22px;
+  margin-right: 30px;
 }
 
 .logo {
@@ -105,26 +106,23 @@ export default {
 }
 
 @media screen and (max-width: 760px) {
-    .container-left {
-        flex-direction: row-reverse;
-    }
+  .container-left #menu {
+    display: none;
+  }
 
-    .container-left #menu{
-       visibility: hidden;
-    }
+  .container-left #icon-menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+  }
 
-    .container-left #icon-menu{
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        padding-left: 140px;
-        cursor: pointer;
-    }
-}
+  .container-right span {
+    display: none;
+  }
 
-@media screen and (max-width: 560px) {
-    .logo {
-        display: none;
-    }
+  .container-right i:first-child {
+    margin-right: 20px;
+  }
 }
 </style>

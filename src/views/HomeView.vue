@@ -1,25 +1,20 @@
 <template>
   <div>
     <header-app />
+    <movies />
   </div>
 </template>
 
 <script>
-import config from "@/config/config";
+import Movies from "@/components/Movies.vue"
 import HeaderApp from "@/components/HeaderApp.vue";
 
 export default {
   name: "HomeView",
   components: {
     HeaderApp,
-  },
-  created() {
-    fetch(`${config.apiTmdbUrl}${config.apiTmdbKey}&language=pt-BR`)
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-      });
-  },
+    Movies
+  }
 };
 </script>
 
