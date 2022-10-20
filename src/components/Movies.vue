@@ -2,13 +2,14 @@
   <div class="container-list-movies">
     <p class="group-movies">Top 20 melhores avaliados</p>
     <div class="container-boxes">
-      <div class="box">
+      <div class="box" >
         <img
           v-for="m in movies"
           :key="m.id"
           :src="`${image}${m.backdrop_path}`"
           alt=""
           :title="m.title"
+          @click="$router.push({name: 'details', params: {id: m.id} })"
         />
       </div>
       <i
@@ -39,11 +40,21 @@ export default {
   },
   created() {
     fetch(
-      `${config.apiTmdbUrl}movie/top_rated?${config.apiTmdbKey}&language=pt-BR`
+      //`${config.apiTmdbUrl}movie/top_rated${config.apiTmdbKey}&language=pt-BR`
+      `${config.apiTmdbUrl}discover/movie${config.apiTmdbKey}&sort_by=popularity.desc&language=pt-BR`
     )
       .then((response) => response.json())
       .then((response) => {
         this.movies = response.results;
+
+        this.movies.sort((a,b) => {
+          if(b.title < a.title) {
+            return 1
+          }else if(b.title > a.title) {
+            return -1
+          }
+          return 0
+        })
       });
   },
   methods: {
@@ -72,7 +83,7 @@ export default {
       if (this.scrollAmount > 0) {
         document.getElementById('switchLeft').style.display = 'flex'
       }
-    },
+    }
   },
 };
 </script>
