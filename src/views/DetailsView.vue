@@ -5,14 +5,24 @@
     </div>
     <div class="box-movie">
       <div class="movie-img">
-        <img :src="`${image}${movie.poster_path}`" />
+        <img :src="`${image}${movie.backdrop_path}`" />
       </div>
       <div class="movie-details">
-        <h1 id="title">{{movie.title}}</h1>
-        <h4 id="sinopse">{{movie.overview}}</h4>
-        <p id="runtime"><b>Duração do filme: </b>{{movie.runtime}} minutos</p>
-        <p id="company"><b>Companhia: </b>{{movie.production_companies[0].name}}</p>
-        <p v-if="movie.revenue > 0" id="revenue"><b>Receita: </b>{{movie.revenue}}</p>
+        <h1 id="title">{{ movie.title }}</h1>
+        <h4 id="sinopse"><b>Sinopse: </b><span>{{ movie.overview }}</span></h4>
+        <p id="runtime"><b>Duração do filme: </b><span>{{ movie.runtime }} minutos</span></p>
+      </div>
+
+      <div class="movie-trailer">
+        <iframe
+          width="560"
+          height="315"
+          :src="`https://www.youtube.com/embed/${key}`"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
   </div>
@@ -27,6 +37,7 @@ export default {
     return {
       movie: "",
       image: config.imageTmdb,
+      key: "",
     };
   },
   created() {
@@ -36,7 +47,15 @@ export default {
       .then((response) => response.json())
       .then((response) => {
         this.movie = response;
-        console.log(this.movie);
+      });
+
+    fetch(
+      `${config.apiTmdbUrl}movie/${this.$route.params.id}/videos${config.apiTmdbKey}&language=pt-BR`
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        let trailer = response.results[0];
+        this.key = trailer.key
       });
   },
 };
@@ -46,15 +65,16 @@ export default {
 .container-movie {
   width: 100%;
   height: 100vh;
-  background: #212130;
 }
 
 .container-close {
   width: 100%;
   text-align: right;
   font-size: 2rem;
-  padding:5px 20px;
+  padding: 5px 20px;
   color: #fff;
+  position: absolute;
+  z-index: 10;
 }
 
 .container-close i {
@@ -63,36 +83,39 @@ export default {
 
 .box-movie {
   width: 100%;
-  height: 90vh;
+  height: 99vh;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
 
-.box-movie img{
-  height: 85vh;
+.box-movie img {
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.4;
 }
 
 .movie-img {
-  width: 45%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  width: 100%;
+  background: #000000;
 }
 
 .movie-details {
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  width: 45%;
+  width: 50%;
   height: 85vh;
+  left: 0px;
   padding: 40px;
   color: #fff;
 }
 
 .movie-details #title {
-  font-size: 3rem;
+  font-size: 4rem;
   margin-bottom: 20px;
 }
 
@@ -101,10 +124,20 @@ export default {
 }
 
 .movie-details #sinopse,
-.movie-details #runtime,
-.movie-details #company,
-.movie-details #revenue {
-  font-size: 1.1rem;
+.movie-details #runtime {
+  font-size: 1.4rem;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-details #sinopse b,
+.movie-details #runtime b{
+  margin-bottom: 5px;
+}
+
+.movie-trailer {
+  position: absolute;
+  right: 80px;
 }
 </style>

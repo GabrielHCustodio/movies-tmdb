@@ -2,14 +2,14 @@
   <div class="container-list-movies">
     <p class="group-movies">Top 20 melhores avaliados</p>
     <div class="container-boxes">
-      <div class="box" >
+      <div class="box">
         <img
           v-for="m in movies"
           :key="m.id"
-          :src="`${image}${m.backdrop_path}`"
-          alt=""
+          :src="`${image}${m.poster_path}`"
+          alt="poster-movie"
           :title="m.title"
-          @click="$router.push({name: 'details', params: {id: m.id} })"
+          @click="$router.push({ name: 'details', params: { id: m.id } })"
         />
       </div>
       <i
@@ -47,14 +47,14 @@ export default {
       .then((response) => {
         this.movies = response.results;
 
-        this.movies.sort((a,b) => {
-          if(b.title < a.title) {
-            return 1
-          }else if(b.title > a.title) {
-            return -1
+        this.movies.sort((a, b) => {
+          if (b.title < a.title) {
+            return 1;
+          } else if (b.title > a.title) {
+            return -1;
           }
-          return 0
-        })
+          return 0;
+        });
       });
   },
   methods: {
@@ -81,9 +81,9 @@ export default {
       });
 
       if (this.scrollAmount > 0) {
-        document.getElementById('switchLeft').style.display = 'flex'
+        document.getElementById("switchLeft").style.display = "flex";
       }
-    }
+    },
   },
 };
 </script>
@@ -112,7 +112,7 @@ export default {
 }
 
 .container-boxes {
-  height: 180px;
+  height: 280px;
   width: 93%;
   position: relative;
   display: flex;
@@ -132,8 +132,8 @@ export default {
 }
 
 .container-boxes .box img {
-  min-width: 260px;
-  max-width: 260px;
+  min-width: 180px;
+  max-width: 180px;
   height: auto;
   background-size: cover;
   margin-left: 15px;
@@ -171,13 +171,13 @@ export default {
 
 .container-boxes #switchLeft {
   position: absolute;
-  left: -50px;
+  left: -40px;
   display: none;
 }
 
 .container-boxes #switchRight {
   position: absolute;
-  right: -50px;
+  right: -40px;
 }
 
 .container-boxes #switchLeft:hover,
