@@ -1,15 +1,15 @@
 <template>
-  <div class="container-list-movies">
-    <p class="group-movies">Top 20 melhores avaliados</p>
+  <div class="container-list-series">
+    <p class="group-series">Series com melhor avaliação</p>
     <div class="container-boxes">
       <div class="box">
         <img
-          v-for="m in movies"
-          :key="m.id"
-          :src="`${image}${m.poster_path}`"
+          v-for="s in series"
+          :key="s.id"
+          :src="`${image}${s.poster_path}`"
           alt="poster-movie"
-          :title="m.title"
-          @click="$router.push({ name: 'details-movie', params: { id: m.id } })"
+          :title="s.title"
+          @click="$router.push({ name: 'details-serie', params: { id: s.id } })"
         />
       </div>
       <i
@@ -28,11 +28,12 @@
 
 <script>
 import config from "@/config/config";
+
 export default {
-  name: "Movies",
+  name: "Series",
   data() {
     return {
-      movies: "",
+      series: "",
       image: config.imageTmdb,
       scrollPerClick: 275,
       scrollAmount: 0,
@@ -40,20 +41,12 @@ export default {
   },
   created() {
     fetch(
-      `${config.apiTmdbUrl}discover/movie${config.apiTmdbKey}&sort_by=popularity.desc&language=pt-BR`
+      `${config.apiTmdbUrl}tv/top_rated${config.apiTmdbKey}&sort_by=popularity.desc&language=pt-BR`
     )
       .then((response) => response.json())
       .then((response) => {
-        this.movies = response.results;
-
-        this.movies.sort((a, b) => {
-          if (b.title < a.title) {
-            return 1;
-          } else if (b.title > a.title) {
-            return -1;
-          }
-          return 0;
-        });
+        this.series = response.results;
+        console.log(this.series);
       });
   },
   methods: {
@@ -88,7 +81,7 @@ export default {
 </script>
 
 <style scoped>
-.container-list-movies {
+/*.container-list-series {
   z-index: 1;
   display: flex;
   align-items: center;
@@ -100,7 +93,70 @@ export default {
   padding-bottom: 20px;
 }
 
-.group-movies {
+.group-series {
+  width: 100%;
+  color: #fff;
+  margin-left: 50px;
+  font-size: 1.4vw;
+  line-height: 1.25vw;
+  font-weight: bolder;
+  padding: 90px 0 20px 10px;
+}
+
+.container-boxes {
+  height: 280px;
+  width: 93%;
+  position: relative;
+  display: flex;
+}
+
+.container-boxes .box {
+  width: auto;
+  text-align: center;
+  padding-bottom: 10px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.container-boxes .box img {
+  min-width: 180px;
+  max-width: 180px;
+  height: auto;
+  background-size: cover;
+  margin: 15px;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  z-index: 2;
+  object-fit: cover;
+  border: none;
+  border-radius: 20px;
+}
+
+.container-boxes .box img:first-child {
+  margin-left: 0;
+}
+
+.container-boxes .box img:hover {
+  transform: scale(1.1);
+  z-index: 5;
+}*/
+
+/* 8888888888888 */
+.container-list-series {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  background: #212130;
+  padding-bottom: 20px;
+}
+
+.group-series {
   width: 100%;
   color: #fff;
   margin-left: 50px;
@@ -185,4 +241,4 @@ export default {
   opacity: 1;
   background: rgba(33, 33, 48, 0.4);
 }
-</style> 
+</style>
