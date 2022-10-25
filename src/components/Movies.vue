@@ -1,28 +1,25 @@
 <template>
-  <div class="container-list-movies">
-    <p class="group-movies">Top 20 melhores avaliados</p>
-    <div class="container-boxes">
-      <div class="box">
-        <img
-          v-for="m in movies"
-          :key="m.id"
-          :src="`${image}${m.poster_path}`"
-          alt="poster-movie"
-          :title="m.title"
-          @click="$router.push({ name: 'details-movie', params: { id: m.id } })"
-        />
-      </div>
-      <i
-        id="switchLeft"
-        class="fa-solid fa-chevron-left"
-        @click="showMovieLeft"
-      ></i>
-      <i
-        id="switchRight"
-        class="fa-solid fa-chevron-right"
-        @click="showMovieRight"
-      ></i>
+  <div class="container-boxes">
+    <div class="box">
+      <img
+        v-for="m in movies"
+        :key="m.id"
+        :src="`${image}${m.poster_path}`"
+        alt="poster-movie"
+        :title="m.title"
+        @click="$router.push({ name: 'details-movie', params: { id: m.id } })"
+      />
     </div>
+    <i
+      id="switchLeft"
+      class="fa-solid fa-chevron-left"
+      @click="showMovieLeft"
+    ></i>
+    <i
+      id="switchRight"
+      class="fa-solid fa-chevron-right"
+      @click="showMovieRight"
+    ></i>
   </div>
 </template>
 
@@ -30,6 +27,9 @@
 import config from "@/config/config";
 export default {
   name: "Movies",
+  props: {
+    link: String,
+  },
   data() {
     return {
       movies: "",
@@ -40,7 +40,7 @@ export default {
   },
   created() {
     fetch(
-      `${config.apiTmdbUrl}discover/movie${config.apiTmdbKey}&sort_by=popularity.desc&language=pt-BR`
+      `${config.apiTmdbUrl}${this.link}${config.apiTmdbKey}&sort_by=popularity.desc&language=pt-BR`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -88,30 +88,8 @@ export default {
 </script>
 
 <style scoped>
-.container-list-movies {
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-  height: 100%;
-  background: #212130;
-  padding-bottom: 20px;
-}
-
-.group-movies {
-  width: 100%;
-  color: #fff;
-  margin-left: 50px;
-  font-size: 1.4vw;
-  line-height: 1.25vw;
-  font-weight: bolder;
-  padding: 90px 0 20px 10px;
-}
-
 .container-boxes {
-  height: 280px;
+  height: 300px;
   width: 93%;
   position: relative;
   display: flex;

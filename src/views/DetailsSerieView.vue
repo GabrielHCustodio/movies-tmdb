@@ -57,7 +57,6 @@ export default {
       .then((response) => response.json())
       .then((response) => {
         let trailer = response.results[0];
-        console.log(trailer.key)
         this.key = trailer.key
       });
   },
