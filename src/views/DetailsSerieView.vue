@@ -23,9 +23,6 @@
           allowfullscreen
         ></iframe>
       </div>
-      <div v-else class="serie-trailer">
-        <p>Este título não tem trailer</p>
-      </div>
     </div>
   </div>
 </template>
@@ -136,14 +133,4 @@ export default {
   margin-bottom: 5px;
 }
 
-.serie-trailer {
-  position: absolute;
-  right: 80px;
-}
-
-.serie-trailer p {
-  color: #fff;
-  font-size: 1.7rem;
-  margin-right: 50px;
-}
 </style>

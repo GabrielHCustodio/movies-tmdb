@@ -2,10 +2,26 @@
   <div>
     <header-app />
     <div class="container-list-movies">
-      <p class="group-movies">Top 20 melhores avaliados</p>
-      <movies :link="`discover/movie`" />
-      <p class="group-movies">Melhores ranqueados</p>
-      <movies :link="`movie/top_rated`" />
+      <p class="group-movies">Descobertas do momento</p>
+      <movies :link="`discover/movie`"/>
+      <p class="group-movies">Top melhores filmes avaliados</p>
+      <movies :link="`movie/top_rated`"/>
+      <p class="group-movies">Romance</p>
+      <movies :link="`discover/movie`" :genre="`&with_genres=10749`"/>
+      <p class="group-movies">Aventura</p>
+      <movies :link="`discover/movie`" :genre="`&with_genres=12`"/>
+      <p class="group-movies">Animação</p>
+      <movies :link="`discover/movie`" :genre="`&with_genres=16`"/>
+      <p class="group-movies">Comédia</p>
+      <movies :link="`discover/movie`" :genre="`&with_genres=35`"/>
+      <p class="group-movies">Família</p>
+      <movies :link="`discover/movie`" :genre="`&with_genres=10751`"/>
+      <p class="group-movies">Ficção científica</p>
+      <movies :link="`discover/movie`" :genre="`&with_genres=878`"/>
+      <p class="group-movies">Mistério</p>
+      <movies :link="`discover/movie`" :genre="`&with_genres=9648`"/>
+      <p class="group-movies">Terror</p>
+      <movies :link="`discover/movie`" :genre="`&with_genres=27`"/>
     </div>
   </div>
 </template>

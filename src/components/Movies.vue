@@ -13,12 +13,12 @@
     <i
       id="switchLeft"
       class="fa-solid fa-chevron-left"
-      @click="showMovieLeft"
+      @click="showMovieLeft()"
     ></i>
     <i
       id="switchRight"
       class="fa-solid fa-chevron-right"
-      @click="showMovieRight"
+      @click="showMovieRight()"
     ></i>
   </div>
 </template>
@@ -29,6 +29,7 @@ export default {
   name: "Movies",
   props: {
     link: String,
+    genre: String
   },
   data() {
     return {
@@ -36,12 +37,17 @@ export default {
       image: config.imageTmdb,
       scrollPerClick: 275,
       scrollAmount: 0,
+      url: ''
     };
   },
   created() {
-    fetch(
-      `${config.apiTmdbUrl}${this.link}${config.apiTmdbKey}&sort_by=popularity.desc&language=pt-BR`
-    )
+    if(this.genre === '') {
+      this.url = `${config.apiTmdbUrl}${this.link}${config.apiTmdbKey}&sort_by=popularity.desc&language=pt-BR`
+    }else {
+      this.url = `${config.apiTmdbUrl}${this.link}${config.apiTmdbKey}&sort_by=popularity.desc&language=pt-BR${this.genre}`
+    }
+
+    fetch(this.url)
       .then((response) => response.json())
       .then((response) => {
         this.movies = response.results;

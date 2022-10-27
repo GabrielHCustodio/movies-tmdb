@@ -13,7 +13,7 @@
         <p id="runtime"><b>Duração do filme: </b><span>{{ movie.runtime }} minutos</span></p>
       </div>
 
-      <div class="movie-trailer">
+      <div v-if="this.key !== '' " class="movie-trailer">
         <iframe
           width="560"
           height="315"
