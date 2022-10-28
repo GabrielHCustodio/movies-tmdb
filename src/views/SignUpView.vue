@@ -1,44 +1,38 @@
 <template>
   <div class="container-login">
     <div class="container-login-left">
+      <img src="@/assets/create.svg" alt="image-login" />
+    </div>
+    <div class="container-login-right">
       <div class="container-form">
-        <h2>Seja bem-vindo</h2>
+        <h2>Cadastre-se agora</h2>
         <form>
+          <div class="input">
+            <label for="name">Nome</label>
+            <input type="text" name="name" placeholder="Nome completo..." />
+          </div>
           <div class="input">
             <label for="email">Email</label>
             <input
               type="email"
               name="email"
-              placeholder="Entre com seu email..."
+              placeholder="Seu melhor email..."
             />
           </div>
-
           <div class="input">
             <label for="password">Senha</label>
             <input
               type="password"
               name="password"
-              placeholder="Informe sua senha..."
+              placeholder="Digite sua senha..."
             />
           </div>
-
-          <div class="more">
-            <div class="check">
-              <input type="checkbox" name="check" id="" />
-              <label for="check">Lembre-se de mim</label>
-            </div>
-            <a href="">Recuperar senha</a>
-          </div>
-
-          <button @click="$router.push('/')">ENTRAR</button>
-          <p id="sign-up">
-            Ainda não tem conta?<a @click="$router.push('sign-up')"> Cadastre-se agora</a>
+          <button @click="$router.push('login')">CADASTRAR</button>
+          <p id="login">
+            Já tem conta?<a @click="$router.push('login')"> Acesse agora</a>
           </p>
         </form>
       </div>
-    </div>
-    <div class="container-login-right">
-      <img src="@/assets/login.svg" alt="image-login" />
     </div>
   </div>
 </template>
@@ -120,25 +114,8 @@ a {
   outline: none;
 }
 
-.container-form form .more {
-  margin-bottom: 1.4rem;
-  width: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.container-form form .more .check {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.container-form form .more .check label {
-  padding-left: 0.5rem;
-}
-
 .container-form form button {
+  margin-top: 1rem;
   margin-bottom: 2rem;
   width: 300px;
   height: 35px;
@@ -154,19 +131,19 @@ a {
   opacity: 0.8;
 }
 
-.container-form form #sign-up {
+.container-form form #login {
   width: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.container-form form #sign-up a {
+.container-form form #login a {
   margin-left: 0.3rem;
 }
 
-.container-login-right img {
+.container-login-left img {
   width: 100%;
-  padding-right: 80px;
+  padding-left: 80px;
 }
 </style>
