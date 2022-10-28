@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import DetailsMovieView from '../views/DetailsMovieView.vue'
-import DetailsSerieView from '../views/DetailsSerieView.vue'
-import HomeView from '../views/HomeView.vue'
-import SeriesView from '../views/SeriesView.vue'
+import DetailsMovieView from '@/views/DetailsMovieView.vue'
+import DetailsSerieView from '@/views/DetailsSerieView.vue'
+import HomeView from '@/views/HomeView.vue'
+import LoginView from '@/views/LoginView.vue'
+import SeriesView from '@/views/SeriesView.vue'
 
 
 const routes = [
@@ -25,6 +26,11 @@ const routes = [
     path: '/detailsSerie/:id',
     name: 'details-serie',
     component: DetailsSerieView
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView
   }
 ]
 

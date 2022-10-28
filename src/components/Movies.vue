@@ -37,14 +37,14 @@ export default {
       image: config.imageTmdb,
       scrollPerClick: 275,
       scrollAmount: 0,
-      url: ''
+      url: "",
     };
   },
   created() {
-    if(this.genre === '') {
-      this.url = `${config.apiTmdbUrl}${this.link}${config.apiTmdbKey}&sort_by=popularity.desc&language=pt-BR`
-    }else {
-      this.url = `${config.apiTmdbUrl}${this.link}${config.apiTmdbKey}&sort_by=popularity.desc&language=pt-BR${this.genre}`
+    if (this.genre === "") {
+      this.url = `${config.apiTmdbUrl}${this.link}${config.apiTmdbKey}&sort_by=popularity.desc&language=pt-BR`;
+    } else {
+      this.url = `${config.apiTmdbUrl}${this.link}${config.apiTmdbKey}&sort_by=popularity.desc&language=pt-BR${this.genre}`;
     }
 
     fetch(this.url)

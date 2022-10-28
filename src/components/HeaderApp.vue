@@ -14,7 +14,7 @@
     <div class="container-right">
       <i class="fa-solid fa-magnifying-glass"></i>
       <i class="fa-regular fa-user"></i>
-      <span>Entrar</span>
+      <span @click="$router.push('login')">Entrar</span>
     </div>
   </div>
 </template>
