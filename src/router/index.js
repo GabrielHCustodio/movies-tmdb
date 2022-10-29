@@ -3,6 +3,7 @@ import DetailsMovieView from '@/views/DetailsMovieView.vue'
 import DetailsSerieView from '@/views/DetailsSerieView.vue'
 import HomeView from '@/views/HomeView.vue'
 import LoginView from '@/views/LoginView.vue'
+import SearchView from '@/views/SearchView.vue'
 import SeriesView from '@/views/SeriesView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 
@@ -36,6 +37,11 @@ const routes = [
     path: '/sign-up',
     name: 'sign-up',
     component: SignUpView
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: SearchView
   }
 ]
 

@@ -12,7 +12,7 @@
       <h1>Cine+</h1>
     </div>
     <div class="container-right">
-      <i class="fa-solid fa-magnifying-glass"></i>
+      <i class="fa-solid fa-magnifying-glass" @click="$router.push('search')"></i>
       <i class="fa-regular fa-user"></i>
       <span @click="$router.push('login')">Entrar</span>
     </div>
