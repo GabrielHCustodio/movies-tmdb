@@ -12,7 +12,7 @@
         <h4 id="sinopse"><b>Sinopse: </b><span>{{ serie.overview }}</span></h4>
       </div>
 
-      <div v-if="this.key !== '' " class="serie-trailer">
+      <div class="serie-trailer">
         <iframe
           width="560"
           height="315"
@@ -41,7 +41,7 @@ export default {
   },
   created() {
     fetch(
-      `${config.apiTmdbUrl}tv/${this.$route.params.id}${config.apiTmdbKey}&language=pt-BR`
+      `${config.apiTmdbUrl}tv/${this.$route.params.id}/videos${config.apiTmdbKey}&language=pt-BR`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -133,4 +133,9 @@ export default {
   margin-bottom: 5px;
 }
 
+
+.serie-trailer {
+  position: absolute;
+  right: 80px;
+}
 </style>

@@ -12,34 +12,56 @@
       />
       <i class="fa-solid fa-magnifying-glass" @click="searchName"></i>
     </div>
+    <div class="container-result" v-if="this.nameSearch === ''">
+      Nenhum nome pesquisado
+    </div>
+    <loader-request v-else-if="this.nameSearch !== '' && loader === true"/>
+    <div class="container-result" v-else>
+      <movie-search :response="listResponse"/>
+    </div>
   </div>
 </template>
 
 <script>
+import config from "@/config/config";
 import HeaderApp from "@/components/HeaderApp.vue";
+import MovieSearch from "@/components/MovieSearch.vue"
+import LoaderRequest from '@/components/LoaderRequest.vue';
 
 export default {
   name: "SearchView",
   components: {
     HeaderApp,
+    MovieSearch,
+    LoaderRequest
   },
   data() {
     return {
       nameSearch: "",
+      listResponse: "",
+      loader: true
     };
   },
   methods: {
     searchName() {
-        console.log(this.nameSearch)
-    }
-  }
+      fetch(
+        `${config.apiTmdbUrl}/search/movie${config.apiTmdbKey}&sort_by=popularity.desc&language=pt-BR&query=${this.nameSearch}`
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          this.listResponse = response.results
+
+          this.loader = !this.loader
+        });
+    },
+  },
 };
 </script>
 
 <style scoped>
 .search {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background: #212130;
 }
 
@@ -68,5 +90,15 @@ export default {
   padding-left: 10px;
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+.container-result {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  color: #fff;
+  font-size: 1.1rem;
 }
 </style>
