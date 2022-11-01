@@ -48,10 +48,10 @@ export default {
   methods: {
     searchName() {
       this.nameParams = this.nameSearch
-      this.$router.push(`/search/movie&name=${this.nameParams}`)
+      this.$router.push({name: 'searchType', params: { type: 'movie'}, query: {name: this.nameParams} })
       this.loader = false
     },
-  },
+  }
 };
 </script>
 

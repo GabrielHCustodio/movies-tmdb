@@ -33,18 +33,20 @@ export default {
       response: '',
       type: true,
       image: config.imageTmdb,
-      nameSearch: this.$route,
+      nameSearch: this.$route.query.name,
       params: this.$route.params.type
     };
-  },
-  created() {
-    console.log(this.nameSearch)
   },
   updated() {
       switch (this.params) {
         case 'movie': return this.type = true
         case 'serie': return this.type = false
       }
+  },
+  watch: {
+    nameSearch: function (val) {
+      console.log(val)
+    }
   }
 };
 </script>
