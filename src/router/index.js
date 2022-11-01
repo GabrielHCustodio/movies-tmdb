@@ -7,6 +7,8 @@ import SearchView from '@/views/SearchView.vue'
 import SeriesView from '@/views/SeriesView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 
+import SearchResponse from '@/components/SearchResponse.vue'
+
 const routes = [
   {
     path: '/',
@@ -41,7 +43,16 @@ const routes = [
   {
     path: '/search',
     name: 'search',
-    component: SearchView
+    component: SearchView,
+    children: [
+      {
+        path: '/search/:type',
+        name: 'searchType',
+        components: {
+          searchType: SearchResponse
+        }
+      }
+    ]
   }
 ]
 

@@ -6,53 +6,50 @@
         type="text"
         name=""
         id="search"
-        placeholder="Nome do filme..."
+        placeholder="Nome do filme ou série..."
         v-model="nameSearch"
         @keyup.enter="searchName"
       />
-      <i class="fa-solid fa-magnifying-glass" @click="searchName"></i>
+      <i class="fa-solid fa-magnifying-glass" @click="searchName()"></i>
     </div>
     <div class="container-result" v-if="this.nameSearch === ''">
       Nenhum nome pesquisado
     </div>
-    <loader-request v-else-if="this.nameSearch !== '' && loader === true"/>
+    <loader-request v-else-if="this.nameSearch !== '' && loader === true" />
     <div class="container-result" v-else>
-      <movie-search :response="listResponse"/>
+      <div class="container-link">
+        <router-link :to="{ name: 'searchType', params: { type: 'movie'}, query: { name: this.nameParams} }">Resultado em filmes</router-link>
+        <router-link :to="{ name: 'searchType', params: { type: 'serie'}, query: { name: this.nameParams} }">Resultado em series</router-link>
+      </div>
+
+      <span><router-view name="searchType" /></span>
     </div>
   </div>
 </template>
 
 <script>
-import config from "@/config/config";
 import HeaderApp from "@/components/HeaderApp.vue";
-import MovieSearch from "@/components/MovieSearch.vue"
-import LoaderRequest from '@/components/LoaderRequest.vue';
+import LoaderRequest from "@/components/LoaderRequest.vue";
 
 export default {
   name: "SearchView",
   components: {
     HeaderApp,
-    MovieSearch,
-    LoaderRequest
+    LoaderRequest,
   },
   data() {
     return {
+      nameParams: "",
       nameSearch: "",
       listResponse: "",
-      loader: true
+      loader: true,
     };
   },
   methods: {
     searchName() {
-      fetch(
-        `${config.apiTmdbUrl}/search/movie${config.apiTmdbKey}&sort_by=popularity.desc&language=pt-BR&query=${this.nameSearch}`
-      )
-        .then((response) => response.json())
-        .then((response) => {
-          this.listResponse = response.results
-
-          this.loader = !this.loader
-        });
+      this.nameParams = this.nameSearch
+      this.$router.push(`/search/movie&name=${this.nameParams}`)
+      this.loader = false
     },
   },
 };
@@ -97,8 +94,21 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   padding: 20px 0;
   color: #fff;
   font-size: 1.1rem;
+}
+
+.container-link {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.container-link a {
+  color: #fff;
+  text-decoration: none;
 }
 </style>

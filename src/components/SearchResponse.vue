@@ -1,6 +1,16 @@
 <template>
   <div class="container-boxes">
-    <div class="box">
+    <div class="box" v-if="type === true">
+      <img
+        v-for="r in response"
+        :key="r.id"
+        :src="`${image}${r.poster_path}`"
+        alt="poster-movie"
+        :title="r.title"
+        @click="$router.push({ name: 'details-movie', params: { id: r.id } })"
+      />
+    </div>
+    <div class="box" v-else>
       <img
         v-for="r in response"
         :key="r.id"
@@ -17,15 +27,25 @@
 import config from "@/config/config";
 
 export default {
-  name: "SerieSearch",
-  props: {
-    response: Object,
-  },
+  name: "SearchResponse",
   data() {
     return {
+      response: '',
+      type: true,
       image: config.imageTmdb,
+      nameSearch: this.$route,
+      params: this.$route.params.type
     };
   },
+  created() {
+    console.log(this.nameSearch)
+  },
+  updated() {
+      switch (this.params) {
+        case 'movie': return this.type = true
+        case 'serie': return this.type = false
+      }
+  }
 };
 </script>
 
