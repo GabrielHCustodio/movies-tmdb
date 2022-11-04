@@ -48,6 +48,7 @@ const routes = [
       {
         path: '/search/:type',
         name: 'searchType',
+        props: true,
         components: {
           searchType: SearchResponse
         }

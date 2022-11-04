@@ -20,22 +20,16 @@ export default {
   name: "SearchResponse",
   data() {
     return {
-      movies: '',
-      type: true,
       image: config.imageTmdb,
-      params: this.$route.params.type,
-      query: this.$route.query.name,
+      params: this.$route.params.type
     };
   },
-  created() {
-    fetch(
-      `${config.searchTmdb}${config.apiTmdbKey}&sort_by=popularity.desc&language=pt-BR&query=${this.query}`
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        this.movies = response.results
-        console.log(this.movies)
-      });
+  props: {
+    movies: Array,
+    type: String
+  },
+  updated() {
+    console.log(this.type)
   }
 };
 </script>
@@ -43,13 +37,15 @@ export default {
 <style scoped>
 .container-boxes {
   height: 100%;
-  width: 95%;
+  width: 100%;
   position: relative;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container-boxes .box {
-  width: 100%;
+  width: 95%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;

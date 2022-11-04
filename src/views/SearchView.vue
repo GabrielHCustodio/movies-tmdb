@@ -36,22 +36,26 @@
         >
       </div>
 
-      <span><router-view name="searchType"></router-view></span>
+      <span
+        ><router-view name="searchType" :movies="movies"></router-view
+      ></span>
     </div>
   </div>
 </template>
 
 <script>
+import config from "@/config/config"
+
 import HeaderApp from "@/components/HeaderApp.vue";
 import LoaderRequest from "@/components/LoaderRequest.vue";
-import SearchResponse from "@/components/SearchResponse.vue"
+import SearchResponse from "@/components/SearchResponse.vue";
 
 export default {
   name: "SearchView",
   components: {
     HeaderApp,
     LoaderRequest,
-    SearchResponse
+    SearchResponse,
   },
   data() {
     return {
@@ -59,11 +63,15 @@ export default {
       nameSearch: "",
       listResponse: "",
       loader: true,
+      movies: [],
     };
   },
   methods: {
     searchName() {
-      this.nameParams = this.nameSearch;
+      this.nameParams = this.nameSearch
+
+      this.searchMovies()
+
       this.$router.push({
         name: "searchType",
         params: { type: "movie" },
@@ -71,6 +79,15 @@ export default {
       });
       this.loader = false;
     },
+    searchMovies() {
+      fetch(
+        `${config.searchTmdb}${config.apiTmdbKey}&sort_by=popularity.desc&language=pt-BR&query=${this.nameParams}`
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          this.movies = response.results;
+        });
+    }
   },
 };
 </script>
