@@ -1,23 +1,13 @@
 <template>
   <div class="container-boxes">
-    <div class="box" v-if="type === true">
+    <div class="box">
       <img
-        v-for="r in response"
-        :key="r.id"
-        :src="`${image}${r.poster_path}`"
+        v-for="m in movies"
+        :key="m.id"
+        :src="`${image}${m.poster_path}`"
         alt="poster-movie"
-        :title="r.title"
-        @click="$router.push({ name: 'details-movie', params: { id: r.id } })"
-      />
-    </div>
-    <div class="box" v-else>
-      <img
-        v-for="r in response"
-        :key="r.id"
-        :src="`${image}${r.poster_path}`"
-        alt="poster-movie"
-        :title="r.name"
-        @click="$router.push({ name: 'details-movie', params: { id: r.id } })"
+        :title="m.title"
+        @click="$router.push({ name: 'details-movie', params: { id: m.id } })"
       />
     </div>
   </div>
@@ -30,23 +20,22 @@ export default {
   name: "SearchResponse",
   data() {
     return {
-      response: '',
+      movies: '',
       type: true,
       image: config.imageTmdb,
-      nameSearch: this.$route.query.name,
-      params: this.$route.params.type
+      params: this.$route.params.type,
+      query: this.$route.query.name,
     };
   },
-  updated() {
-      switch (this.params) {
-        case 'movie': return this.type = true
-        case 'serie': return this.type = false
-      }
-  },
-  watch: {
-    nameSearch: function (val) {
-      console.log(val)
-    }
+  created() {
+    fetch(
+      `${config.searchTmdb}${config.apiTmdbKey}&sort_by=popularity.desc&language=pt-BR&query=${this.query}`
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        this.movies = response.results
+        console.log(this.movies)
+      });
   }
 };
 </script>

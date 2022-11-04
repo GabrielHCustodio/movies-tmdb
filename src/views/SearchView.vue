@@ -13,16 +13,30 @@
       <i class="fa-solid fa-magnifying-glass" @click="searchName()"></i>
     </div>
     <div class="container-result" v-if="this.nameSearch === ''">
-      Nenhum nome pesquisado
+      Digite o nome do filme...
     </div>
     <loader-request v-else-if="this.nameSearch !== '' && loader === true" />
     <div class="container-result" v-else>
       <div class="container-link">
-        <router-link :to="{ name: 'searchType', params: { type: 'movie'}, query: { name: this.nameParams} }">Resultado em filmes</router-link>
-        <router-link :to="{ name: 'searchType', params: { type: 'serie'}, query: { name: this.nameParams} }">Resultado em series</router-link>
+        <router-link
+          :to="{
+            name: 'searchType',
+            params: { type: 'movie' },
+            query: { name: this.nameParams },
+          }"
+          >Resultado em filmes</router-link
+        >
+        <router-link
+          :to="{
+            name: 'searchType',
+            params: { type: 'serie' },
+            query: { name: this.nameParams },
+          }"
+          >Resultado em series</router-link
+        >
       </div>
 
-      <span><router-view name="searchType" /></span>
+      <span><router-view name="searchType"></router-view></span>
     </div>
   </div>
 </template>
@@ -30,12 +44,14 @@
 <script>
 import HeaderApp from "@/components/HeaderApp.vue";
 import LoaderRequest from "@/components/LoaderRequest.vue";
+import SearchResponse from "@/components/SearchResponse.vue"
 
 export default {
   name: "SearchView",
   components: {
     HeaderApp,
     LoaderRequest,
+    SearchResponse
   },
   data() {
     return {
@@ -47,11 +63,15 @@ export default {
   },
   methods: {
     searchName() {
-      this.nameParams = this.nameSearch
-      this.$router.push({name: 'searchType', params: { type: 'movie'}, query: {name: this.nameParams} })
-      this.loader = false
+      this.nameParams = this.nameSearch;
+      this.$router.push({
+        name: "searchType",
+        params: { type: "movie" },
+        query: { name: this.nameParams },
+      });
+      this.loader = false;
     },
-  }
+  },
 };
 </script>
 
