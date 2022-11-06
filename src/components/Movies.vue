@@ -169,4 +169,11 @@ export default {
   opacity: 1;
   background: rgba(33, 33, 48, 0.4);
 }
+
+@media screen and (max-width: 768px) {
+  .container-boxes #switchLeft,
+  .container-boxes #switchRight {
+    display: none;
+  }
+}
 </style> 

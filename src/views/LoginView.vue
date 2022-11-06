@@ -52,7 +52,7 @@ export default {
 <style scoped>
 .container-login {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: #212130;
   display: flex;
   justify-content: center;
@@ -167,6 +167,21 @@ a {
 
 .container-login-right img {
   width: 100%;
+  max-width: 600px;
   padding-right: 80px;
+}
+
+@media screen and (max-width: 768px) {
+  .container-login-left {
+    width: 100%;
+  }
+
+  .container-form {
+    width: 400px;
+  }
+
+  .container-login-right {
+    display: none;
+  }
 }
 </style>

@@ -146,4 +146,18 @@ a {
   width: 100%;
   padding-left: 80px;
 }
+
+@media screen and (max-width: 850px) {
+  .container-login-rigth {
+    width: 100%;
+  }
+
+  .container-form {
+    width: 400px;
+  }
+
+  .container-login-left {
+    display: none;
+  }
+}
 </style>

@@ -56,7 +56,7 @@ export default {
   width: 100%;
   color: #fff;
   margin-left: 50px;
-  font-size: 1.4vw;
+  font-size: 18px;
   line-height: 1.25vw;
   font-weight: bolder;
   padding: 20px 0 10px 0;

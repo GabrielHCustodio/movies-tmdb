@@ -12,8 +12,11 @@
       <h1>Cine+</h1>
     </div>
     <div class="container-right">
-      <i class="fa-solid fa-magnifying-glass" @click="$router.push('search')"></i>
-      <i class="fa-regular fa-user"></i>
+      <i
+        class="fa-solid fa-magnifying-glass"
+        @click="$router.push('search')"
+      ></i>
+      <i class="fa-regular fa-user" @click="$router.push('login')"></i>
       <span @click="$router.push('login')">Entrar</span>
     </div>
   </div>
@@ -105,7 +108,19 @@ export default {
   color: #fff;
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 10px 30px;
+  }
+
+  .container-left,
+  .container-right,
+  .logo {
+    width: 100%;
+    height: 100%;
+  }
+
   .container-left #menu {
     display: none;
   }
@@ -115,6 +130,12 @@ export default {
     align-items: center;
     justify-content: flex-start;
     cursor: pointer;
+  }
+
+  .container-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 
   .container-right span {

@@ -24,7 +24,7 @@
             params: { type: 'movie' },
             query: { name: this.nameParams },
           }"
-          >Resultado em filmes</router-link
+          >Filmes</router-link
         >
         <router-link
           :to="{
@@ -32,7 +32,7 @@
             params: { type: 'serie' },
             query: { name: this.nameParams },
           }"
-          >Resultado em series</router-link
+          >Séries</router-link
         >
       </div>
 
