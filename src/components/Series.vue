@@ -137,7 +137,6 @@ export default {
   width: 3%;
   color: #fff;
   font-size: 1.7vw;
-  background: blue;
   top: 0;
   opacity: 0;
   z-index: 3;
@@ -160,4 +159,12 @@ export default {
   opacity: 1;
   background: rgba(33, 33, 48, 0.4);
 }
+
+@media screen and (max-width: 768px) {
+  .container-boxes #switchLeft,
+  .container-boxes #switchRight {
+    display: none;
+  }
+}
+
 </style>

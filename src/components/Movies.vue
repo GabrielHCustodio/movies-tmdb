@@ -146,7 +146,6 @@ export default {
   width: 3%;
   color: #fff;
   font-size: 1.7vw;
-  background: blue;
   top: 0;
   opacity: 0;
   z-index: 3;

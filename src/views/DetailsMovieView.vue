@@ -4,9 +4,6 @@
       <i class="fa-solid fa-xmark" @click="$router.push('/')"></i>
     </div>
     <div class="box-movie-trailer" v-if="this.key !== ''">
-      <div class="movie-img">
-        <img :src="`${image}${movie.backdrop_path}`" />
-      </div>
       <div class="movie-details">
         <h1 id="title">{{ movie.title }}</h1>
         <h4 id="sinopse">
@@ -19,7 +16,7 @@
 
       <div class="movie-trailer">
         <iframe
-          width="560"
+          width="510"
           height="315"
           :src="`https://www.youtube.com/embed/${key}`"
           title="YouTube video player"
@@ -31,9 +28,6 @@
     </div>
 
     <div class="box-movie" v-else>
-      <div class="movie-img">
-        <img id="backdrop" :src="`${image}${movie.backdrop_path}`" />
-      </div>
       <div class="movie-details">
         <h1 id="title">{{ movie.title }}</h1>
         <h4 id="sinopse">
@@ -84,6 +78,8 @@ export default {
 .container-movie {
   width: 100%;
   height: 100vh;
+  background: #212130;
+  position: relative;
 }
 
 .container-close {
@@ -92,8 +88,8 @@ export default {
   font-size: 2rem;
   padding: 5px 20px;
   color: #fff;
-  position: absolute;
   z-index: 10;
+  position: absolute;
 }
 
 .container-close i {
@@ -103,26 +99,13 @@ export default {
 /* There is trailer */
 .box-movie-trailer {
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-}
-
-.box-movie-trailer img {
-  width: 100%;
-  height: 100%;
-  opacity: 0.4;
-}
-
-.box-movie-trailer .movie-img {
-  position: relative;
-  width: 100%;
-  background: #000000;
+  justify-content: space-between;
 }
 
 .box-movie-trailer .movie-details {
-  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -135,7 +118,7 @@ export default {
 }
 
 .box-movie-trailer .movie-details #title {
-  font-size: 4rem;
+  font-size: 3.2rem;
   margin-bottom: 20px;
 }
 
@@ -145,7 +128,7 @@ export default {
 
 .box-movie-trailer .movie-details #sinopse,
 .box-movie-trailer .movie-details #runtime {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -157,8 +140,11 @@ export default {
 }
 
 .movie-trailer {
-  position: absolute;
-  right: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 5%;
+  width: 50%;
 }
 
 /* There is no trailer */
@@ -216,6 +202,33 @@ export default {
   margin-bottom: 5px;
 }
 
+/* responsive - trailer */
+
+@media screen and (max-width: 1000px) {
+  .container-movie {
+    height: 135vh;
+  }
+
+  .box-movie-trailer {
+    flex-direction: column;
+  }
+
+  .box-movie-trailer .movie-details {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 517px) {
+  .box-movie-trailer .movie-details {
+    margin-top: 85px;
+  }
+
+  .movie-trailer {
+    margin-top: 70px;
+  }
+}
+
+/* responsive - no trailer */
 @media screen and (max-width: 600px) {
   .box-movie {
     height: 100%;
