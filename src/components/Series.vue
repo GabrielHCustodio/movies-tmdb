@@ -50,7 +50,6 @@ export default {
       .then((response) => response.json())
       .then((response) => {
         this.series = response.results;
-        console.log(this.series);
       });
   },
   methods: {
