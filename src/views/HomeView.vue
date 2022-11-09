@@ -55,14 +55,13 @@ export default {
 .group-movies {
   width: 100%;
   color: #fff;
-  margin-left: 50px;
   font-size: 18px;
   line-height: 1.25vw;
   font-weight: bolder;
-  padding: 20px 0 10px 0;
+  padding: 2.5% 0 15px 3.5%;
 }
 
 .group-movies:first-child {
-  padding: 90px 0 10px 0;
+  padding: 90px 0 15px 3.5%;
 }
 </style>

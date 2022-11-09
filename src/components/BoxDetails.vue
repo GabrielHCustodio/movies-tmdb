@@ -1,8 +1,8 @@
 <template>
   <div class="box-details">
     <div class="container-details">
-      <h1 id="title" v-if="item.tile !== ''">{{ item.title }}</h1>
-      <h1 id="title" v-if="item.name !== ''">{{ item.name }}</h1>
+      <h1 id="title" v-if="item.title">{{ item.title }}</h1>
+      <h1 id="title" v-else>{{ item.name }}</h1>
       <h4 id="sinopse">
         <b>Sinopse: </b><span>{{ item.overview }}</span>
       </h4>
@@ -27,25 +27,29 @@
     </div>
 
     <div class="container-poster" v-else>
-      <img id="poster" :src="`${image}${item.poster_path}`" alt="poster-movie">
+      <img
+        id="poster"
+        :src="`${image}${item.poster_path}`"
+        alt="poster-movie"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import config from "@/config/config"
+import config from "@/config/config";
 
 export default {
   name: "BoxDetails",
   data() {
     return {
       image: config.imageTmdb,
-    }
+    };
   },
   props: {
     item: Object,
     keyVideo: String,
-  }
+  },
 };
 </script>
 
@@ -71,7 +75,7 @@ export default {
 
 .box-details .container-details #title {
   font-size: 3.2rem;
-  margin-bottom:20px;
+  margin-bottom: 20px;
 }
 
 .box-details .container-details #sinopse {
@@ -82,7 +86,7 @@ export default {
 .box-details .container-details #runtime,
 .box-details .container-details #seasons {
   font-size: 1.3rem;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
 }
@@ -109,7 +113,7 @@ export default {
 
 @media screen and (max-width: 1000px) {
   .box-details {
-    height: 100%;
+    max-height: 100%;
     flex-direction: column;
   }
 
@@ -117,15 +121,19 @@ export default {
     width: 100%;
   }
 
+  .box-details .container-details #title {
+    margin-top: 5%;
+  }
+
   .box-details .container-trailer,
-.box-details .container-poster {
-  padding-bottom: 5%;
-}
+  .box-details .container-poster {
+    padding: 10% 0;
+  }
 }
 
 @media screen and (max-width: 417px) {
   .box-details .container-details #title {
-    margin-top: 10px;
+    margin-top: 15%;
   }
 }
 </style>

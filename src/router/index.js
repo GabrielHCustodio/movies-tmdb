@@ -46,7 +46,7 @@ const routes = [
     component: SearchView,
     children: [
       {
-        path: '/search/:type',
+        path: '/search',
         name: 'searchType',
         props: true,
         components: {

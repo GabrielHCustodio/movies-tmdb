@@ -37,7 +37,7 @@
       </div>
 
       <span
-        ><router-view name="searchType" :movies="movies"></router-view
+        ><router-view name="searchType" :list="list"></router-view
       ></span>
     </div>
   </div>
@@ -61,9 +61,8 @@ export default {
     return {
       nameParams: "",
       nameSearch: "",
-      listResponse: "",
       loader: true,
-      movies: [],
+      list: [],
     };
   },
   methods: {
@@ -85,7 +84,7 @@ export default {
       )
         .then((response) => response.json())
         .then((response) => {
-          this.movies = response.results;
+          this.list = response.results;
         });
     }
   },

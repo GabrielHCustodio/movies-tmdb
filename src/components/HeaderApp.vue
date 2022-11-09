@@ -4,7 +4,6 @@
       <ul id="menu">
         <li class="li-menu" @click="$router.push('/')">Filmes</li>
         <li class="li-menu" @click="$router.push('series')">Séries</li>
-        <li class="li-menu">Genêros</li>
       </ul>
       <i id="icon-menu" class="fa-solid fa-bars"></i>
     </div>

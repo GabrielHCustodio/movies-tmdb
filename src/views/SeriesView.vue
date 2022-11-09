@@ -61,14 +61,13 @@ export default {
 .group-series {
   width: 100%;
   color: #fff;
-  margin-left: 50px;
-  font-size: 1.4vw;
+  font-size: 18px;
   line-height: 1.25vw;
   font-weight: bolder;
-  padding: 20px 0 20px 10px;
+  padding: 2.5% 0 15px 3.5%;
 }
 
 .group-series:first-child {
-  padding: 90px 0 10px 0;
+  padding: 90px 0 15px 3.5%;
 }
 </style>

@@ -2,12 +2,12 @@
   <div class="container-boxes">
     <div class="box">
       <img
-        v-for="m in movies"
-        :key="m.id"
-        :src="`${image}${m.poster_path}`"
-        alt="poster-movie"
-        :title="m.title"
-        @click="$router.push({ name: 'details-movie', params: { id: m.id } })"
+        v-for="l in list"
+        :key="l.id"
+        :src="`${image}${l.poster_path}`"
+        alt="poster"
+        :title="l.title"
+        @click="$router.push({ name: 'details-movie', params: { id: l.id } })"
       />
     </div>
   </div>
@@ -25,8 +25,7 @@ export default {
     };
   },
   props: {
-    movies: Array,
-    type: String
+    list: Array
   },
   updated() {
     console.log(this.type)
@@ -45,10 +44,10 @@ export default {
 }
 
 .container-boxes .box {
-  width: 95%;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
