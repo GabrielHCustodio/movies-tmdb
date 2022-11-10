@@ -12,7 +12,7 @@ import config from "@/config/config";
 import BoxDetails from "@/components/BoxDetails.vue";
 
 export default {
-  name: "DetailsMovie",
+  name: "DetailsMovieView",
   data() {
     return {
       item: "",

@@ -7,7 +7,7 @@
         :src="`${image}${l.poster_path}`"
         alt="poster"
         :title="l.title"
-        @click="$router.push({ name: 'details-movie', params: { id: l.id } })"
+        @click="push(l.id)"
       />
     </div>
   </div>
@@ -20,15 +20,17 @@ export default {
   name: "SearchResponse",
   data() {
     return {
-      image: config.imageTmdb,
-      params: this.$route.params.type
+      image: config.imageTmdb
     };
   },
   props: {
-    list: Array
+    list: Array,
+    type: String
   },
-  updated() {
-    console.log(this.type)
+  methods: {
+    push(id) {
+      this.$router.push({ name: `details-${this.type}`, params: { id: id } })
+    }
   }
 };
 </script>

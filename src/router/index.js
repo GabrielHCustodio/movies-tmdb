@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import DetailsMovieView from '@/views/DetailsMovieView.vue'
-import DetailsSerieView from '@/views/DetailsSerieView.vue'
+import DetailsTvView from '@/views/DetailsTvView.vue'
 import HomeView from '@/views/HomeView.vue'
 import LoginView from '@/views/LoginView.vue'
 import SearchView from '@/views/SearchView.vue'
@@ -26,9 +26,9 @@ const routes = [
     component: DetailsMovieView
   },
   {
-    path: '/detailsSerie/:id',
-    name: 'details-serie',
-    component: DetailsSerieView
+    path: '/detailsTv/:id',
+    name: 'details-tv',
+    component: DetailsTvView
   },
   {
     path: '/login',

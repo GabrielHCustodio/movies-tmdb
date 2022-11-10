@@ -12,7 +12,7 @@ import config from "@/config/config";
 import BoxDetails from "@/components/BoxDetails.vue";
 
 export default {
-  name: "DetailsSeries",
+  name: "DetailsTvView",
   data() {
     return {
       item: "",

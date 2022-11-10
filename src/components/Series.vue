@@ -7,7 +7,7 @@
         :src="`${image}${s.poster_path}`"
         alt="poster-movie"
         :title="s.name"
-        @click="$router.push({ name: 'details-serie', params: { id: s.id } })"
+        @click="$router.push({ name: 'details-tv', params: { id: s.id } })"
       />
     </div>
     <i

@@ -3,7 +3,7 @@
     <div class="container-details">
       <h1 id="title" v-if="item.title">{{ item.title }}</h1>
       <h1 id="title" v-else>{{ item.name }}</h1>
-      <h4 id="sinopse">
+      <h4 id="sinopse" v-if="item.overview">
         <b>Sinopse: </b><span>{{ item.overview }}</span>
       </h4>
       <p id="runtime" v-if="item.runtime">
@@ -11,6 +11,12 @@
       </p>
       <p id="seasons" v-if="item.seasons">
         <b>Temporadas: </b><span>{{ item.seasons.length }}</span>
+      </p>
+      <p id="vote" v-if="item.vote_average">
+        <b>Avaliação: </b
+        ><span>{{
+          item.vote_average.toFixed(1)
+        }} %</span>
       </p>
     </div>
 
@@ -84,7 +90,8 @@ export default {
 
 .box-details .container-details #sinopse,
 .box-details .container-details #runtime,
-.box-details .container-details #seasons {
+.box-details .container-details #seasons,
+.box-details .container-details #vote {
   font-size: 1.3rem;
   margin-bottom: 30px;
   display: flex;
@@ -93,7 +100,8 @@ export default {
 
 .box-details .container-details #sinopse b,
 .box-details .container-details #runtime b,
-.box-details .container-details #seasons b {
+.box-details .container-details #seasons b,
+.box-details .container-details #vote b {
   margin-bottom: 5px;
 }
 
