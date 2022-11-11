@@ -5,7 +5,7 @@
         <li class="li-menu" @click="$router.push('/')">Filmes</li>
         <li class="li-menu" @click="$router.push('series')">Séries</li>
       </ul>
-      <i id="icon-menu" class="fa-solid fa-bars"></i>
+      <i id="icon-menu" class="fa-solid fa-bars" @click="openMenu"></i>
     </div>
     <div class="logo">
       <h1>Cine+</h1>
@@ -24,6 +24,15 @@
 <script>
 export default {
   name: "HeaderApp",
+  methods: {
+    openMenu() {
+      const menu = document.getElementById("menu");
+      menu.style.display = "flex";
+
+      const iconMenu = document.getElementById("icon-menu");
+      iconMenu.style.display = "none";
+    },
+  },
 };
 </script>
 
@@ -122,6 +131,7 @@ export default {
 
   .container-left #menu {
     display: none;
+    flex-direction: column;
   }
 
   .container-left #icon-menu {
@@ -129,6 +139,10 @@ export default {
     align-items: center;
     justify-content: flex-start;
     cursor: pointer;
+  }
+
+  .container-left .li-menu:first-child {
+    margin-bottom: 5px;
   }
 
   .container-right {
