@@ -92,7 +92,7 @@ export default {
 .box-details .container-details #runtime,
 .box-details .container-details #seasons,
 .box-details .container-details #vote {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;

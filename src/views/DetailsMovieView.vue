@@ -1,7 +1,7 @@
 <template>
   <div class="container-movie">
     <div class="container-close">
-      <i class="fa-solid fa-xmark" @click="$router.push('/')"></i>
+      <i class="fa-solid fa-xmark" @click="$router.go(-1)"></i>
     </div>
     <box-details :item="item" :keyVideo="keyVideo" />
   </div>

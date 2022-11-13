@@ -8,8 +8,9 @@
         alt="poster"
         :title="l.title"
         @click="push(l.id)"
+        v-show="l.poster_path !== null"
       />
-    </div>
+      </div>
   </div>
 </template>
 
