@@ -13,12 +13,12 @@
     <i
       id="switchLeft"
       class="fa-solid fa-chevron-left"
-      @click="showMovieLeft"
+      @click="showMovieLeft(this.id)"
     ></i>
     <i
       id="switchRight"
       class="fa-solid fa-chevron-right"
-      @click="showMovieRight"
+      @click="showMovieRight(this.id)"
     ></i>
   </div>
 </template>
@@ -31,6 +31,7 @@ export default {
   props: {
     link: String,
     genre: String,
+    id: Number,
   },
   data() {
     return {
@@ -53,10 +54,10 @@ export default {
       });
   },
   methods: {
-    showMovieLeft() {
-      const movies = document.querySelector(".box");
+    showMovieLeft(id) {
+      const movies = document.querySelectorAll(".box");
 
-      movies.scrollTo({
+      movies[id].scrollTo({
         top: 0,
         left: (this.scrollAmount -= this.scrollPerClick),
         behavior: "smooth",
@@ -66,18 +67,14 @@ export default {
         this.scrollAmount = 0;
       }
     },
-    showMovieRight() {
-      const movies = document.querySelector(".box");
+    showMovieRight(id) {
+      const movies = document.querySelectorAll(".box");
 
-      movies.scrollTo({
+      movies[id].scrollTo({
         top: 0,
         left: (this.scrollAmount += this.scrollPerClick),
         behavior: "smooth",
       });
-
-      if (this.scrollAmount > 0) {
-        document.getElementById("switchLeft").style.display = "flex";
-      }
     },
   },
 };
@@ -144,7 +141,6 @@ export default {
 .container-boxes #switchLeft {
   position: absolute;
   left: -40px;
-  display: none;
 }
 
 .container-boxes #switchRight {

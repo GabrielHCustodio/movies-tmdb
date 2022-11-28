@@ -65,8 +65,8 @@ export default {
   },
   methods: {
     showMovieLeft(id) {
-      const movies = document.querySelector(`.box`)[id];
-      movies.scrollTo({
+      const movies = document.querySelectorAll(`.box`);
+      movies[id].scrollTo({
         top: 0,
         left: (this.scrollAmount -= this.scrollPerClick),
         behavior: "smooth",
@@ -77,17 +77,13 @@ export default {
       }
     },
     showMovieRight(id) {
-      const movies = document.querySelector(".box");
-      movies.scrollTo({
+      const movies = document.querySelectorAll(".box");
+      movies[id].scrollTo({
         top: 0,
         left: (this.scrollAmount += this.scrollPerClick),
         behavior: "smooth",
       });
-
-      if (this.scrollAmount > 0) {
-        document.getElementById("switchLeft").style.display = "flex";
-      }
-    },
+    }
   },
 };
 </script>
@@ -153,7 +149,6 @@ export default {
 .container-boxes #switchLeft {
   position: absolute;
   left: -40px;
-  display: none;
 }
 
 .container-boxes #switchRight {

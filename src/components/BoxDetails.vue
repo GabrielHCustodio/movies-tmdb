@@ -80,8 +80,8 @@ export default {
 }
 
 .box-details .container-details #title {
-  font-size: 3.2rem;
-  margin-bottom: 20px;
+  font-size: 3rem;
+  margin-bottom: 15px;
 }
 
 .box-details .container-details #sinopse {
@@ -92,7 +92,7 @@ export default {
 .box-details .container-details #runtime,
 .box-details .container-details #seasons,
 .box-details .container-details #vote {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
@@ -102,7 +102,7 @@ export default {
 .box-details .container-details #runtime b,
 .box-details .container-details #seasons b,
 .box-details .container-details #vote b {
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
 .box-details .container-trailer,

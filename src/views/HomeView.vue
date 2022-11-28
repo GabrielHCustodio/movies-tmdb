@@ -3,25 +3,25 @@
     <header-app />
     <div class="container-list-movies">
       <p class="group-movies">Descobertas do momento</p>
-      <movies :link="`discover/movie`" :id="1"/>
+      <movies :link="`discover/movie`" :id="0"/>
       <p class="group-movies">Top melhores filmes avaliados</p>
-      <movies :link="`movie/top_rated`" :id="2"/>
+      <movies :link="`movie/top_rated`" :id="1"/>
       <p class="group-movies">Romance</p>
-      <movies :link="`discover/movie`" :genre="`&with_genres=10749`" :id="3"/>
+      <movies :link="`discover/movie`" :genre="`&with_genres=10749`" :id="2"/>
       <p class="group-movies">Aventura</p>
-      <movies :link="`discover/movie`" :genre="`&with_genres=12`" :id="4"/>
+      <movies :link="`discover/movie`" :genre="`&with_genres=12`" :id="3"/>
       <p class="group-movies">Animação</p>
-      <movies :link="`discover/movie`" :genre="`&with_genres=16`" :id="5"/>
+      <movies :link="`discover/movie`" :genre="`&with_genres=16`" :id="4"/>
       <p class="group-movies">Comédia</p>
-      <movies :link="`discover/movie`" :genre="`&with_genres=35`" :id="6"/>
+      <movies :link="`discover/movie`" :genre="`&with_genres=35`" :id="5"/>
       <p class="group-movies">Família</p>
-      <movies :link="`discover/movie`" :genre="`&with_genres=10751`" :id="7"/>
+      <movies :link="`discover/movie`" :genre="`&with_genres=10751`" :id="6"/>
       <p class="group-movies">Ficção científica</p>
-      <movies :link="`discover/movie`" :genre="`&with_genres=878`" :id="8"/>
+      <movies :link="`discover/movie`" :genre="`&with_genres=878`" :id="7"/>
       <p class="group-movies">Mistério</p>
-      <movies :link="`discover/movie`" :genre="`&with_genres=9648`" :id="9"/>
+      <movies :link="`discover/movie`" :genre="`&with_genres=9648`" :id="8"/>
       <p class="group-movies">Terror</p>
-      <movies :link="`discover/movie`" :genre="`&with_genres=27`" :id="10"/>
+      <movies :link="`discover/movie`" :genre="`&with_genres=27`" :id="9"/>
     </div>
   </div>
 </template>
