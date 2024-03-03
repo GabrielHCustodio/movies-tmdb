@@ -80,7 +80,7 @@ export default {
 }
 
 .box-details .container-details #title {
-  font-size: 3rem;
+  font-size: 2.8rem;
   margin-bottom: 15px;
 }
 
@@ -92,7 +92,7 @@ export default {
 .box-details .container-details #runtime,
 .box-details .container-details #seasons,
 .box-details .container-details #vote {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
